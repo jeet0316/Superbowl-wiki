@@ -62,11 +62,12 @@ def final_reasults(final_list):
         print("No data available for the following search")
     else:
         for bowl in final_list:
-            print(f"Date of The Superbowl:          {bowl.date}")
+            print(f"Date of The Superbowl:          {bowl.date[0]} {bowl.date[1]}, {bowl.date[2]}")
             print(f"Location:                       {bowl.stadium}, {bowl.city}, {bowl.state}")
             print(f"Winner of the SuperBowl:        {bowl.winner} by {bowl.winpts}")
             print(f"MVP:                            {bowl.mvp}")
             print(f"Loser of the SuperBowl:         {bowl.lose} by {bowl.losepts}")
+        print("-" * 30)
             
 
 
