@@ -1,5 +1,5 @@
 import csv
-from tabulate import tabulate
+
 superbowl_data = []
 
 
