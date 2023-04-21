@@ -85,7 +85,7 @@ def start():
             mode = input("What kind of mode would you like to use (Team, Year):")
         if mode == "year":
             while value == "":
-                value = int(input("Please choose  year from 1967 to 2022 or Winning Team Name: "))
+                value = int(input("Please choose  year from 1967 to 2022: "))
                 if value > 2022 or value < 1967:
                     print("Only choose from 1967 to 2022")
                     value = ""
