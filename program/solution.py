@@ -54,6 +54,9 @@ def get_list_by_data(list_to_sort, sort_type, sort_attr):
         if sort_type == "year":
             if bowl.year == sort_attr:
                 temp_list.append(bowl)
+        elif sort_type == "team":
+            if bowl.winner == sort_attr:
+                temp_list.append(bowl)
     return temp_list
 
 #3b get attribute from the list
@@ -67,7 +70,7 @@ def final_reasults(final_list):
             print(f"Winner of the SuperBowl:        {bowl.winner} by {bowl.winpts}")
             print(f"MVP:                            {bowl.mvp}")
             print(f"Loser of the SuperBowl:         {bowl.lose} by {bowl.losepts}")
-        print("-" * 30)
+            print("-" * 30)
             
 
 
@@ -76,18 +79,22 @@ def start():
     print("---Super Bowl Encyclopedia---")
     print("This program reads a Superbowl dataset and allows user to sort by inputting keywords to search")
     while True:
-        year = ""
-        while year == "":
-            year = input("Please choose  year from 1967 to 2022: ")
-            if year not in ["1967","1968","1969""1970","1971","1972","1973","1974","1975","1976","1977","1978",
-            "1979","1980","1981","1982","1983","1984","1985","1986","1987","1988","1989","1990","1991","1992",
-            "1993", "1994","1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006",
-            "2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020",
-            "2021", "2022"]:
-                print("Only choose from 1967 to 2022")
-                year = ""
+        value = ""
+        mode = ""
+        while mode not in ["team", "year"]:
+            mode = input("What kind of mode would you like to use (Team, Year):")
+        if mode == "year":
+            while value == "":
+                value = int(input("Please choose  year from 1967 to 2022 or Winning Team Name: "))
+                if value > 2022 or value < 1967:
+                    print("Only choose from 1967 to 2022")
+                    value = ""
+        elif mode == "team":
+            while value == "":
+                value = input("Please enter a team name:")
+
                 #3c part 2/3d first call
-        year_list = get_list_by_data(superbowl_data, "year", year)
+        year_list = get_list_by_data(superbowl_data, mode, str(value))
         final_reasults(year_list)
         restart = input("Do you want to go again? [y/n]: ").lower()
         if restart[0] == "n":
